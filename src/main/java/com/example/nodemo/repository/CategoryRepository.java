@@ -1,0 +1,8 @@
+package com.example.nodemo.repository;
+
+import com.example.nodemo.model.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category,Long> {
+
+}
