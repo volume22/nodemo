@@ -21,9 +21,9 @@ public class Coffee {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    @CreationTimestamp
-    private ZonedDateTime createdDate;
-    @UpdateTimestamp
-    private ZonedDateTime updatedDate;
+//    @CreationTimestamp
+//    private ZonedDateTime createdDate;
+//    @UpdateTimestamp
+//    private ZonedDateTime updatedDate;
 
 }
