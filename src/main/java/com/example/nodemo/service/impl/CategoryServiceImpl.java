@@ -14,6 +14,10 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryRepository = categoryRepository;
     }
     @Override
+    public Category getById(Long id) {
+        return categoryRepository.findById(id).orElseThrow();
+    }
+    @Override
     public Long createCategory(String name) {
         Category category = new Category();
         category.setName(name);
