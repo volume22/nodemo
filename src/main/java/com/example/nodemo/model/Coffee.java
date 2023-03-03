@@ -7,6 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "coffees")
 @Getter
@@ -21,6 +23,8 @@ public class Coffee {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    @ManyToMany
+    private List<Order> coffeeOrders;
 //    @CreationTimestamp
 //    private ZonedDateTime createdDate;
 //    @UpdateTimestamp

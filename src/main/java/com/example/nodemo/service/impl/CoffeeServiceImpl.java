@@ -8,6 +8,8 @@ import com.example.nodemo.service.CoffeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CoffeeServiceImpl implements CoffeeService {
@@ -18,7 +20,10 @@ public class CoffeeServiceImpl implements CoffeeService {
     public Coffee getById(Long id) {
         return coffeeRepository.findById(id).orElseThrow();
     }
-
+    @Override
+    public List<Coffee> getByIdCoffee(Long id) {
+        return coffeeRepository.findById(id).stream().toList();
+    }
     @Override
     public Coffee createCoffee(CoffeeCreateDto createDto) throws Exception {
         Coffee coffee = new Coffee();
