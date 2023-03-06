@@ -9,18 +9,24 @@ import com.example.nodemo.service.OrderInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class OrderController {
     public final OrderRepository orderRepository;
     private final OrderInterface orderInterface;
-    @GetMapping("/api/orders/{id}")
-    public Order getById(@PathVariable Long id) throws Exception {
-        return orderInterface.getById(id);
-    }
-
+//    @GetMapping("/api/orders/{id}")
+//    public Order getById(@PathVariable Long id) throws Exception {
+//        return orderInterface.getById(id);
+//    }
+//
     @PostMapping("/api/order")
-    public Order createCoffee(@RequestBody OrderCreatedto createDto) throws Exception {
+    public Order createOrder(@RequestBody OrderCreatedto createDto) throws Exception {
         return orderInterface.createOrder(createDto);
+    }
+    @PostMapping("/api/orders")
+    public List<Order> createOrders(@RequestBody List<Long> id) throws Exception {
+        return orderInterface.createOrders(id);
     }
 }

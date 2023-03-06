@@ -8,6 +8,7 @@ import com.example.nodemo.service.CoffeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -21,8 +22,12 @@ public class CoffeeServiceImpl implements CoffeeService {
         return coffeeRepository.findById(id).orElseThrow();
     }
     @Override
-    public List<Coffee> getByIdCoffee(Long id) {
-        return coffeeRepository.findById(id).stream().toList();
+    public List<Coffee> getByIdCoffee(List<Long> id) {
+        return coffeeRepository.findAllById(id).stream().toList();
+    }
+    @Override
+    public Integer getBySumPrice(Long id) {
+        return coffeeRepository.findById(id).get().getPrice()* coffeeRepository.findById(id).get().getQuantity();
     }
     @Override
     public Coffee createCoffee(CoffeeCreateDto createDto) throws Exception {
@@ -33,4 +38,5 @@ public class CoffeeServiceImpl implements CoffeeService {
         coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
         return coffeeRepository.save(coffee);
     }
+
 }
