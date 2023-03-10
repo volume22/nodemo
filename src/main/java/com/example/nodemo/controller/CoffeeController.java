@@ -7,6 +7,8 @@ import com.example.nodemo.service.CoffeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class CoffeeController {
@@ -17,8 +19,14 @@ public class CoffeeController {
         return coffeeService.getById(id);
     }
 
+    @GetMapping("/api/coffee/{id}")
+    public List<Coffee> getByIdCoffee(@PathVariable List<Long> id) throws Exception {
+        return coffeeService.getByIdCoffee(id);
+    }
+
     @PostMapping("/api/coffees")
     public Coffee createCoffee(@RequestBody CoffeeCreateDto createDto) throws Exception {
         return coffeeService.createCoffee(createDto);
     }
+
 }

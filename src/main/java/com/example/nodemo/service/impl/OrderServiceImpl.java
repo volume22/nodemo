@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -22,33 +23,39 @@ public  class OrderServiceImpl implements OrderInterface {
     private final OrderRepository orderRepository;
     private final CoffeeService coffeeService;
 
-//    @Override
-//    public Order getById(Long id) throws Exception {
-//        return orderRepository.findById(id).orElseThrow();
-//    }
 
     @Override
-    public Order createOrder(OrderCreatedto createDto) throws Exception {
+    public Order getById(Long id) throws Exception {
+        return orderRepository.findById(id).orElseThrow();
+    }
+    @Override
+    public Order getByAll() throws Exception {
+        return (Order) orderRepository.findAll().stream().toList();
+    }
+
+    @Override
+    public  Order createOrder(List<Long> ids) throws Exception {
         Order order = new Order();
-        order.setOrderCoffees(coffeeService.getByIdCoffee(createDto.getCoffeesId()));
-//        coffeeService.getByIdCoffee(createDto.getCoffeesId());
-//        order.setSumma(coffeeService.getBySumPrice(createDto.getCoffeesId()));
+        List<Coffee> coffees = new ArrayList<>();
+
+        for (Long in : ids) {
+            coffees.add(coffeeService.getById(in));
+        }
+
+        int sum = orderSum(coffees);
+
+        order.setOrderCoffees(coffees);
+        order.setSumma(sum);
+
         return orderRepository.save(order);
     }
-    @Override
-    public  List<Order> createOrders(List<Long> id) throws Exception {
-        Order orders = new Order();
-        List<Coffee> coffees = new ArrayList<>();
-        int sum =0;
-        for (Coffee in:coffees
-             ) {
-            orders.setOrderCoffees(coffeeService.getByIdCoffee(id));
-//            orders.setSumma(coffeeService.getBySumPrice(id));
-        }
-        return (List<Order>) orderRepository.save(orders);
-    }
     private int orderSum(List<Coffee> coffees) {
+        int sum = 0;
 
-        return 0;
+        for (Coffee coffee : coffees) {
+            sum += coffee.getPrice() * coffee.getQuantity();
+        }
+
+        return sum;
     }
 }

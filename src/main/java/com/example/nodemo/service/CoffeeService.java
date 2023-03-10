@@ -10,8 +10,9 @@ public interface CoffeeService {
     Coffee getById(Long id)throws Exception;
     List<Coffee> getByIdCoffee(List<Long> id)throws Exception;
 
-    Integer getBySumPrice(Long id)throws Exception;
     Coffee createCoffee(CoffeeCreateDto createDto) throws Exception;
+    void deleteCoffee(Long id)throws Exception;
+//    Coffee updateCoffee(CoffeeCreateDto createDto,Long id)throws  Exception;
 
 
 }

@@ -9,6 +9,4 @@ import java.util.List;
 @Setter
 public class OrderCreatedto {
     private List<Long> coffeesId;
-//    private Long coffeesId;
-    private Integer summa;
 }

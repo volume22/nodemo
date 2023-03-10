@@ -8,5 +8,5 @@ import java.util.List;
 
 @Component
 public interface CoffeeRepository extends JpaRepository<Coffee,Long> {
-    List<Object> findById(List<Long> id);
+
 }

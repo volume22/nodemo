@@ -16,17 +16,17 @@ import java.util.List;
 public class OrderController {
     public final OrderRepository orderRepository;
     private final OrderInterface orderInterface;
-//    @GetMapping("/api/orders/{id}")
-//    public Order getById(@PathVariable Long id) throws Exception {
-//        return orderInterface.getById(id);
-//    }
-//
-    @PostMapping("/api/order")
-    public Order createOrder(@RequestBody OrderCreatedto createDto) throws Exception {
-        return orderInterface.createOrder(createDto);
+    @GetMapping("/api/orders/{id}")
+    public Order getById(@PathVariable Long id) throws Exception {
+        return orderInterface.getById(id);
     }
-    @PostMapping("/api/orders")
-    public List<Order> createOrders(@RequestBody List<Long> id) throws Exception {
-        return orderInterface.createOrders(id);
+
+    @PostMapping("/api/order")
+    public Order createOrder() throws Exception {
+        return orderInterface.getByAll();
+    }
+    @PostMapping("/api/order")
+    public Order createOrder(@RequestBody OrderCreatedto createdto) throws Exception {
+        return orderInterface.createOrder(createdto.getCoffeesId());
     }
 }
