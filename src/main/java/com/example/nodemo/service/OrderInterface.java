@@ -11,4 +11,5 @@ public interface OrderInterface {
     Order getById(Long id)throws Exception;
     Order getByAll()throws Exception;
     Order createOrder(List<Long> id) throws  Exception;
+    void deleteOrder(Long id)throws Exception;
 }

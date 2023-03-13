@@ -58,4 +58,8 @@ public  class OrderServiceImpl implements OrderInterface {
 
         return sum;
     }
+    @Override
+    public void deleteOrder(Long id){
+        orderRepository.deleteById(id);
+    }
 }

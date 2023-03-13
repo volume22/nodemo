@@ -39,17 +39,16 @@ public class CoffeeServiceImpl implements CoffeeService {
     public void deleteCoffee(Long id)throws Exception{
         coffeeRepository.deleteById(id);
     }
-    //update sdelat
-//    @Override
-//    public Coffee updateCoffee(CoffeeCreateDto createDto,Long id)throws Exception{
-//       coffeeRepository.findById(id).orElseThrow();
-//
-//       if (id!=null){
-//        createDto.setName(createDto.getName());
-//        createDto.setQuantity(createDto.getQuantity());
-//        createDto.setPrice(createDto.getPrice());
-////        createDto.getCategoryId()setCategory(categoryService.getById(createDto.getCategoryId()));
-//       }
-//        return coffeeRepository.save();
-//    }
+
+    @Override
+    public Coffee updateCoffee(Long id,CoffeeCreateDto createDto)throws Exception{
+       Coffee coffee=coffeeRepository.findById(id).orElseThrow();
+       if (id!=null){
+        coffee.setName(createDto.getName());
+        coffee.setQuantity(createDto.getQuantity());
+        coffee.setPrice(createDto.getPrice());
+        coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
+       }
+        return coffeeRepository.save(coffee);
+    }
 }

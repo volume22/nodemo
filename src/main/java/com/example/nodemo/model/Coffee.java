@@ -25,6 +25,9 @@ public class Coffee {
     private Category category;
     @ManyToMany
     private List<Order> coffeeOrders;
+    @ManyToOne
+    @JoinColumn(name = "like_id")
+    private Like like;
 //    @CreationTimestamp
 //    private ZonedDateTime createdDate;
 //    @UpdateTimestamp

@@ -20,4 +20,12 @@ public class CategoryController {
     public Long createCoffee(@RequestBody CategoryCreatedto createDto) {
         return categoryService.createCategory(createDto.getName());
     }
+    @PutMapping("/api/categories/{id}")
+    public Category updateCategory( @PathVariable Long id,@RequestBody CategoryCreatedto createDto) throws Exception {
+        return categoryService.updateCategory(id,createDto.getName());
+    }
+    @DeleteMapping ("/api/categories/{id}")
+    public void deleteCategory( @PathVariable Long id) throws Exception {
+        categoryService.deleteCategory(id);
+    }
 }

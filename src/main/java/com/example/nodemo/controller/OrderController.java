@@ -21,12 +21,16 @@ public class OrderController {
         return orderInterface.getById(id);
     }
 
-    @PostMapping("/api/order")
-    public Order createOrder() throws Exception {
+    @GetMapping("/api/order")
+    public Order getByAll() throws Exception {
         return orderInterface.getByAll();
     }
     @PostMapping("/api/order")
     public Order createOrder(@RequestBody OrderCreatedto createdto) throws Exception {
         return orderInterface.createOrder(createdto.getCoffeesId());
+    }
+    @DeleteMapping ("/api/order/{id}")
+    public void deleteOrder(@PathVariable Long id) throws Exception {
+         orderInterface.deleteOrder(id);
     }
 }

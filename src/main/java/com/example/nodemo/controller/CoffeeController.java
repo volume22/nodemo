@@ -14,7 +14,7 @@ import java.util.List;
 public class CoffeeController {
     public final CoffeeRepository coffeeRepository;
     private final CoffeeService coffeeService;
-    @GetMapping("/api/coffee/{id}")
+    @GetMapping("/api/coffees/{id}")
     public Coffee getById(@PathVariable Long id) throws Exception {
         return coffeeService.getById(id);
     }
@@ -28,5 +28,12 @@ public class CoffeeController {
     public Coffee createCoffee(@RequestBody CoffeeCreateDto createDto) throws Exception {
         return coffeeService.createCoffee(createDto);
     }
-
+    @DeleteMapping ("/api/coffee/{id}")
+    public void deleteCoffee(@PathVariable Long id) throws Exception {
+        coffeeService.deleteCoffee(id);
+    }
+    @PutMapping("/api/coffee/{id}")
+    public Coffee updateCoffee( @PathVariable Long id,@RequestBody CoffeeCreateDto createDto) throws Exception {
+        return coffeeService.updateCoffee(id,createDto);
+    }
 }
