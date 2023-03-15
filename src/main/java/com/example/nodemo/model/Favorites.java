@@ -7,13 +7,12 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "likes")
+@Entity(name = "favorites")
 @Getter
 @Setter
-public class Like {
+public class Favorites {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean like = false;
-
+    private Boolean like = false;
 }

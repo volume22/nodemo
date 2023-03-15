@@ -29,8 +29,8 @@ public  class OrderServiceImpl implements OrderInterface {
         return orderRepository.findById(id).orElseThrow();
     }
     @Override
-    public Order getByAll() throws Exception {
-        return (Order) orderRepository.findAll().stream().toList();
+    public List<Order> getByAll() throws Exception {
+        return orderRepository.findAll().stream().toList();
     }
 
     @Override

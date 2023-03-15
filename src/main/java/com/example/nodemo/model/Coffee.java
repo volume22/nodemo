@@ -3,12 +3,8 @@ package com.example.nodemo.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity(name = "coffees")
 @Getter
@@ -26,8 +22,8 @@ public class Coffee {
     @ManyToMany
     private List<Order> coffeeOrders;
     @ManyToOne
-    @JoinColumn(name = "like_id")
-    private Like like;
+    @JoinColumn (name = "favorites_id",nullable = false)
+    private Favorites favorites;
 //    @CreationTimestamp
 //    private ZonedDateTime createdDate;
 //    @UpdateTimestamp

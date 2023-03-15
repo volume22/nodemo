@@ -22,7 +22,7 @@ public class OrderController {
     }
 
     @GetMapping("/api/order")
-    public Order getByAll() throws Exception {
+    public List<Order> getByAll() throws Exception {
         return orderInterface.getByAll();
     }
     @PostMapping("/api/order")
