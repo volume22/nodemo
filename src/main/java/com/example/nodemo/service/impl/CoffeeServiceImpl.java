@@ -5,6 +5,7 @@ import com.example.nodemo.model.Coffee;
 import com.example.nodemo.repository.CoffeeRepository;
 import com.example.nodemo.service.CategoryService;
 import com.example.nodemo.service.CoffeeService;
+import com.example.nodemo.service.LikeInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class CoffeeServiceImpl implements CoffeeService {
     private final CoffeeRepository coffeeRepository;
     private final CategoryService categoryService;
+    private final LikeInterface likeInterface;
 
     @Override
     public Coffee getById(Long id) {
@@ -33,6 +35,7 @@ public class CoffeeServiceImpl implements CoffeeService {
         coffee.setQuantity(createDto.getQuantity());
         coffee.setPrice(createDto.getPrice());
         coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
+        coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
         return coffeeRepository.save(coffee);
     }
     @Override

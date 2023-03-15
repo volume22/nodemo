@@ -9,5 +9,6 @@ public class CoffeeCreateDto {
     private String name;
     private Integer quantity;
     private Long categoryId;
+    private Long favoritesId;
     private Integer price;
 }

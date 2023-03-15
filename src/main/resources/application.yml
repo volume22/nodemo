@@ -1,6 +1,5 @@
 
 spring:
-    
   datasource:
     url: jdbc:h2:mem:nodemo
     username: admin
@@ -17,7 +16,7 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
   security:
     user:
       name: volume

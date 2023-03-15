@@ -12,12 +12,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LikeController {
     private final LikeInterface likeInterface;
-    @GetMapping("/api/favorite/{id}")
+    @GetMapping("/api/favorite")
     public List<Favorites> getByAll() throws Exception {
         return likeInterface.getbyAll();
     }
+    @GetMapping("/api/favorites/{id}")
+    public Favorites getById(@PathVariable Long id) throws Exception {
+        return likeInterface.getbyId(id);
+    }
+
     @PostMapping("/api/favorites")
-    public Long createCoffee(@RequestBody LikeCreateDto createDto) {
-        return likeInterface.createLike(createDto.isLike());
+    public Long createCoffee(@RequestBody LikeCreateDto createDto) throws Exception {
+        return likeInterface.createLike(createDto.getFav());
     }
 }

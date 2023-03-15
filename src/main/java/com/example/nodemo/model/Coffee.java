@@ -22,7 +22,7 @@ public class Coffee {
     @ManyToMany
     private List<Order> coffeeOrders;
     @ManyToOne
-    @JoinColumn (name = "favorites_id",nullable = false)
+    @JoinColumn (name = "favorites_id")
     private Favorites favorites;
 //    @CreationTimestamp
 //    private ZonedDateTime createdDate;

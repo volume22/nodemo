@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public class LikeCreateDto {
-    private boolean like;
+    private Boolean fav=false;
 }

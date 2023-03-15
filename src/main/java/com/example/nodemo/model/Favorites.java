@@ -14,5 +14,5 @@ public class Favorites {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Boolean like = false;
+    private Boolean fav;
 }

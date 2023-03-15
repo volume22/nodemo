@@ -12,10 +12,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)throws Exception{
         httpSecurity
-                .httpBasic()
+                .csrf().disable().formLogin()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("**").permitAll()
+                .requestMatchers("/h2-console/**").permitAll()
                 .anyRequest().permitAll();
         return httpSecurity.build();
     }
