@@ -10,5 +10,6 @@ public class CoffeeCreateDto {
     private Integer quantity;
     private Long categoryId;
     private Long favoritesId;
+    private Integer remark;
     private Integer price;
 }
