@@ -1,9 +1,6 @@
 package com.example.nodemo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,4 +12,7 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer remark;
+    @ManyToOne
+    @JoinColumn (name = "coffee_id")
+    private Coffee coffee;
 }

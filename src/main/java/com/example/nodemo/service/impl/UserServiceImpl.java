@@ -31,15 +31,16 @@ public class UserServiceImpl implements UserInterface {
     }
 
     @Override
-    public User updateUser(Long id, UserCreateDto createDto) throws Exception {
+    public void updateUser(Long id, UserCreateDto createDto) throws Exception {
     User user = userRepository.findById(id).orElseThrow();
     user.setUsername(createDto.getUsername());
     if(isValidPassword(createDto.getPassword())==true)
     {
         user.setPassword(createDto.getPassword());
+        userRepository.save(user);
     }
+        System.out.println("Console is: " + System.console());;
 
-    return userRepository.save(user);
     }
     private Boolean isValidPassword(String password)
     {

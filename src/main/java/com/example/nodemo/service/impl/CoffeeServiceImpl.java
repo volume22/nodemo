@@ -2,6 +2,7 @@ package com.example.nodemo.service.impl;
 
 import com.example.nodemo.controller.dto.CoffeeCreateDto;
 import com.example.nodemo.model.Coffee;
+import com.example.nodemo.model.Rating;
 import com.example.nodemo.repository.CoffeeRepository;
 import com.example.nodemo.service.CategoryService;
 import com.example.nodemo.service.CoffeeService;
@@ -18,7 +19,6 @@ public class CoffeeServiceImpl implements CoffeeService {
     private final CoffeeRepository coffeeRepository;
     private final CategoryService categoryService;
     private final LikeInterface likeInterface;
-    private final RatingInterface ratingInterface;
 
 
     @Override
@@ -39,7 +39,6 @@ public class CoffeeServiceImpl implements CoffeeService {
         coffee.setPrice(createDto.getPrice());
         coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
         coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
-        coffee.setRating(ratingInterface.addRatingCoffee(createDto.getRemark()));
         return coffeeRepository.save(coffee);
     }
     @Override
@@ -56,16 +55,16 @@ public class CoffeeServiceImpl implements CoffeeService {
         coffee.setPrice(createDto.getPrice());
         coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
         coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
-//        coffee.setRating(ratingInterface.updateRatingCoffee(ratingInterface.getbyId(),createDto.getRemark()));
+
        }
         return coffeeRepository.save(coffee);
     }
 // update rating to coffee changes List Rating Avg
     @Override
-    public Coffee updateRatingCoffee(Long id,Long ratingid, CoffeeCreateDto createDto) throws Exception {
+    public Coffee updateRatingCoffee(Long id, CoffeeCreateDto createDto) throws Exception {
         Coffee coffee=coffeeRepository.findById(id).orElseThrow();
         if (id!=null){
-            coffee.setRating(ratingInterface.updateRatingCoffee(ratingid,createDto.getRemark()));
+//            coffee.setRating(ratingInterface.updateRatingCoffee(createDto));
         }
         return coffeeRepository.save(coffee);
     }
@@ -74,7 +73,5 @@ public class CoffeeServiceImpl implements CoffeeService {
     public List<Coffee> getByLike() throws Exception {
         return null;
     }
-
-
 
 }

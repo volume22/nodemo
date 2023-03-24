@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserInterface {
     User createUser(UserCreateDto createDto)throws Exception;
-    User updateUser(Long id,UserCreateDto createDto)throws Exception;
+    void updateUser(Long id, UserCreateDto createDto)throws Exception;
     List<User> getByAllUser()throws Exception;
     void deleteUser(Long id)throws Exception;
 }

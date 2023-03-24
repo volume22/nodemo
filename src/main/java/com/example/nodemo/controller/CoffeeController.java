@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class CoffeeController {
-    public final CoffeeRepository coffeeRepository;
     private final CoffeeService coffeeService;
     @GetMapping("/api/coffees/{id}")
     public Coffee getById(@PathVariable Long id) throws Exception {
@@ -37,7 +36,7 @@ public class CoffeeController {
         return coffeeService.updateCoffee(id,createDto);
     }
     @PutMapping("/api/coffee-rating/{id}")
-    public Coffee updateCoffeeRating( @PathVariable Long id,@PathVariable Long ratingid,@RequestBody CoffeeCreateDto createDto) throws Exception {
-        return coffeeService.updateRatingCoffee(id,ratingid,createDto);
+    public Coffee updateCoffeeRating( @PathVariable Long id,@RequestBody CoffeeCreateDto createDto) throws Exception {
+        return coffeeService.updateRatingCoffee(id,createDto);
     }
 }

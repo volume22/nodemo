@@ -24,9 +24,9 @@ public class Coffee {
     @ManyToOne
     @JoinColumn (name = "favorites_id")
     private Favorites favorites;
-    @OneToOne
+    @OneToMany
     @JoinColumn (name = "rating_id")
-    private Rating rating;
+    private List<Rating> rating;
 //    @CreationTimestamp
 //    private ZonedDateTime createdDate;
 //    @UpdateTimestamp

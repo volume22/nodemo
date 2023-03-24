@@ -3,6 +3,8 @@ package com.example.nodemo.controller.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class CoffeeCreateDto {
@@ -10,6 +12,5 @@ public class CoffeeCreateDto {
     private Integer quantity;
     private Long categoryId;
     private Long favoritesId;
-    private Integer remark;
     private Integer price;
 }

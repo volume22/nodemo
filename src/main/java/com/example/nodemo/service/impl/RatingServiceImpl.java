@@ -10,28 +10,37 @@ import com.example.nodemo.service.RatingInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RatingServiceImpl implements RatingInterface {
     private final RatingRepository ratingRepository;
+    private final CoffeeService coffeeService;
 
     @Override
-    public Rating getbyId(Long id) throws Exception {
+    public Rating getById(Long id) throws Exception {
         return ratingRepository.findById(id).orElseThrow();
     }
 
     @Override
-    public Rating addRatingCoffee(Integer remark) throws Exception {
+    public Rating addRatingCoffee(RatingDto ratingDto) throws Exception {
         Rating rating = new Rating();
-        rating.setRemark(remark);
+        rating.setRemark(ratingDto.getRemark());
+        rating.setCoffee(coffeeService.getById(ratingDto.getCoffeeId()));
         return ratingRepository.save(rating);
     }
 
     @Override
-    public Rating updateRatingCoffee(Long id,Integer ratingDto) throws Exception {
+    public Rating updateRatingCoffee(Long id,RatingDto ratingDto) throws Exception {
         Rating rating = ratingRepository.findById(id).orElseThrow();
-        rating.setRemark(ratingDto);
         return  ratingRepository.save(rating);
     }
+
+    @Override
+    public Rating getById(List<Long> ratingId) {
+        return null;
+    }
+
 
 }

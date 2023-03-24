@@ -21,8 +21,8 @@ private  final UserRepository userRepository;
         return userInterface.createUser(createdto);
     }
     @PutMapping ("/api/user/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody UserCreateDto createdto) throws Exception {
-        return userInterface.updateUser(id,createdto);
+    public void updateUser(@PathVariable Long id, @RequestBody UserCreateDto createdto) throws Exception {
+         userInterface.updateUser(id,createdto);
     }
     @GetMapping  ("/api/users")
     public List<User> getByAllUser() throws Exception {
