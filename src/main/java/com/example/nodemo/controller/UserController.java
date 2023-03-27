@@ -7,6 +7,8 @@ import com.example.nodemo.model.User;
 import com.example.nodemo.repository.UserRepository;
 import com.example.nodemo.service.UserInterface;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,20 +18,18 @@ import java.util.List;
 public class UserController {
 private final UserInterface userInterface;
 private  final UserRepository userRepository;
-    @PostMapping("/api/user")
-    public User createUser(@RequestBody UserCreateDto createdto) throws Exception {
-        return userInterface.createUser(createdto);
+    @PostMapping("/registration")
+    public ResponseEntity<?> registration(@RequestBody @Validated UserCreateDto dto) {
+        if(userInterface.findByUsername(dto.getUsername()).isPresent()) {
+            return ResponseEntity.badRequest().body("User already exists");
+        }
+
+        userInterface.registration(dto);
+        return ResponseEntity.ok("User registered");
     }
-    @PutMapping ("/api/user/{id}")
-    public void updateUser(@PathVariable Long id, @RequestBody UserCreateDto createdto) throws Exception {
-         userInterface.updateUser(id,createdto);
-    }
-    @GetMapping  ("/api/users")
-    public List<User> getByAllUser() throws Exception {
-        return userInterface.getByAllUser();
-    }
-    @DeleteMapping  ("/api/user/{id}")
-    public void deleteUser(Long id) throws Exception {
-        userInterface.deleteUser(id);
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserCreateDto dto) {
+        return ResponseEntity.ok(userInterface.login(dto));
     }
 }

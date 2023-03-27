@@ -19,8 +19,8 @@ public class Coffee {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    @ManyToMany
-    private List<Order> coffeeOrders;
+/*    @ManyToMany
+    private List<Order> coffeeOrders;*/
     @ManyToOne
     @JoinColumn (name = "favorites_id")
     private Favorites favorites;

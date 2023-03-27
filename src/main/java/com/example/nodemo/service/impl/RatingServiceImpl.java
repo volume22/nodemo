@@ -14,7 +14,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class RatingServiceImpl implements RatingInterface {
+public class
+RatingServiceImpl implements RatingInterface {
     private final RatingRepository ratingRepository;
     private final CoffeeService coffeeService;
 
