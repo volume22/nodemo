@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class RatingDto {
     private Long coffeeId;
-    private Integer remark;
+    private Double remark;
 }

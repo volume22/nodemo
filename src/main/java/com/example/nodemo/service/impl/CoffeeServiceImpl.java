@@ -55,7 +55,6 @@ public class CoffeeServiceImpl implements CoffeeService {
         coffee.setPrice(createDto.getPrice());
         coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
         coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
-
        }
         return coffeeRepository.save(coffee);
     }

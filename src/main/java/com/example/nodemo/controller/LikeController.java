@@ -25,4 +25,9 @@ public class LikeController {
     public Long createCoffee(@RequestBody LikeCreateDto createDto) throws Exception {
         return likeInterface.createLike(createDto.getFav());
     }
+
+    @PutMapping("/api/favorites/{id}")
+    public Favorites updateLike(@PathVariable Long id,@RequestBody LikeCreateDto createDto) throws Exception {
+        return likeInterface.update(id,createDto.getFav());
+    }
 }

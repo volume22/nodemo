@@ -19,10 +19,6 @@ RatingServiceImpl implements RatingInterface {
     private final RatingRepository ratingRepository;
     private final CoffeeService coffeeService;
 
-    @Override
-    public Rating getById(Long id) throws Exception {
-        return ratingRepository.findById(id).orElseThrow();
-    }
 
     @Override
     public Rating addRatingCoffee(RatingDto ratingDto) throws Exception {
@@ -33,14 +29,29 @@ RatingServiceImpl implements RatingInterface {
     }
 
     @Override
-    public Rating updateRatingCoffee(Long id,RatingDto ratingDto) throws Exception {
-        Rating rating = ratingRepository.findById(id).orElseThrow();
+    public Rating updateRatingCoffee(Long coffeeId,RatingDto ratingDto) throws Exception {
+        Rating rating = ratingRepository.findById(coffeeId).orElseThrow();
+        rating.setRemark(ratingDto.getRemark());
         return  ratingRepository.save(rating);
     }
 
     @Override
-    public Rating getById(List<Long> ratingId) {
-        return null;
+    public List<Rating> getByAll() {
+        return ratingRepository.findAll().stream().toList();
+    }
+
+    @Override
+    public List<Rating> getRatingsForEntity(Long coffeeId) throws Exception {
+        return ratingRepository.findAllByCoffee_Id(coffeeId);    }
+
+    @Override
+    public Double calculateAverageRating(Long coffeeId) throws Exception {
+        List<Rating> ratings = getRatingsForEntity(coffeeId);
+        if (ratings.isEmpty()){
+            return 0.0;
+        }
+            double sum = ratings.stream().mapToDouble(Rating::getRemark).sum();
+        return sum / ratings.size();
     }
 
 

@@ -11,7 +11,7 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer remark;
+    private Double remark;
     @ManyToOne
     @JoinColumn (name = "coffee_id")
     private Coffee coffee;
