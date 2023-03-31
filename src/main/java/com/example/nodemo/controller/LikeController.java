@@ -30,4 +30,5 @@ public class LikeController {
     public Favorites updateLike(@PathVariable Long id,@RequestBody LikeCreateDto createDto) throws Exception {
         return likeInterface.update(id,createDto.getFav());
     }
+
 }

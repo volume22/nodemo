@@ -17,7 +17,7 @@ public class CategoryController {
         return categoryService.getById(id);
     }
     @PostMapping("/api/categories")
-    public Long createCoffee(@RequestBody CategoryCreatedto createDto) {
+    public Long createCategory(@RequestBody CategoryCreatedto createDto) {
         return categoryService.createCategory(createDto.getName());
     }
     @PutMapping("/api/categories/{id}")

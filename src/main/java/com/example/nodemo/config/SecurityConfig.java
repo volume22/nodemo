@@ -61,14 +61,5 @@ public class SecurityConfig {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)throws Exception{
-//        httpSecurity
-//                .csrf().disable().formLogin()
-//                .and()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/h2-console/**").permitAll()
-//                .anyRequest().permitAll();
-//        return httpSecurity.build();
-//    }
+
 }

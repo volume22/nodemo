@@ -38,4 +38,5 @@ public class RatingController {
     public List<Rating> getRatingsForEntity(@PathVariable Long coffeeId) throws Exception {
         return ratingInterface.getRatingsForEntity(coffeeId);
     }
+
 }

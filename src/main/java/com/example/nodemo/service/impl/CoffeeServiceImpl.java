@@ -58,19 +58,11 @@ public class CoffeeServiceImpl implements CoffeeService {
        }
         return coffeeRepository.save(coffee);
     }
-// update rating to coffee changes List Rating Avg
-    @Override
-    public Coffee updateRatingCoffee(Long id, CoffeeCreateDto createDto) throws Exception {
-        Coffee coffee=coffeeRepository.findById(id).orElseThrow();
-        if (id!=null){
-//            coffee.setRating(ratingInterface.updateRatingCoffee(createDto));
-        }
-        return coffeeRepository.save(coffee);
-    }
+
 
     @Override
     public List<Coffee> getByLike() throws Exception {
-        return null;
+        return coffeeRepository.findAllByFavorites_FavIsTrue();
     }
 
 }

@@ -13,6 +13,7 @@ public interface  CoffeeService {
     Coffee createCoffee(CoffeeCreateDto createDto) throws Exception;
     void deleteCoffee(Long id)throws Exception;
     Coffee updateCoffee(Long id,CoffeeCreateDto createDto)throws  Exception;
-    Coffee updateRatingCoffee(Long id,CoffeeCreateDto createDto)throws Exception;
+
     List<Coffee> getByLike()throws Exception;
+
 }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface LikeRepository extends JpaRepository<Favorites,Long> {
+
 }

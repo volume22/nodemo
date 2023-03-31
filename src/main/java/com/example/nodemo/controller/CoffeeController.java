@@ -35,8 +35,8 @@ public class CoffeeController {
     public Coffee updateCoffee( @PathVariable Long id,@RequestBody CoffeeCreateDto createDto) throws Exception {
         return coffeeService.updateCoffee(id,createDto);
     }
-    @PutMapping("/api/coffee-rating/{id}")
-    public Coffee updateCoffeeRating( @PathVariable Long id,@RequestBody CoffeeCreateDto createDto) throws Exception {
-        return coffeeService.updateRatingCoffee(id,createDto);
+    @GetMapping("/api/coffee-like")
+    public List<Coffee> isTrue() throws Exception {
+        return coffeeService.getByLike();
     }
 }
