@@ -65,4 +65,9 @@ public class CoffeeServiceImpl implements CoffeeService {
         return coffeeRepository.findAllByFavorites_FavIsTrue();
     }
 
+    @Override
+    public List<Coffee> getByCategory(String query) throws Exception {
+        return coffeeRepository.searchByCategory_Name(query);
+    }
+
 }

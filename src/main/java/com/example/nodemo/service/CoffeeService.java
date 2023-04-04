@@ -16,4 +16,5 @@ public interface  CoffeeService {
 
     List<Coffee> getByLike()throws Exception;
 
+    List<Coffee> getByCategory(String query)throws Exception;
 }

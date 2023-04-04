@@ -39,4 +39,8 @@ public class CoffeeController {
     public List<Coffee> isTrue() throws Exception {
         return coffeeService.getByLike();
     }
+    @GetMapping("/api/coffee-category")
+    public List<Coffee> searchCategory(@RequestBody String query) throws Exception {
+        return coffeeService.getByCategory(query);
+    }
 }

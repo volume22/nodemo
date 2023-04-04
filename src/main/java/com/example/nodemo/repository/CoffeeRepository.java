@@ -11,5 +11,5 @@ import java.util.List;
 public interface CoffeeRepository extends JpaRepository<Coffee,Long> {
 //    @Query(value ="SELECT * FROM coffees WHERE ", nativeQuery = true)
     List<Coffee> findAllByFavorites_FavIsTrue();
-
+    List<Coffee> searchByCategory_Name(String query);
 }
