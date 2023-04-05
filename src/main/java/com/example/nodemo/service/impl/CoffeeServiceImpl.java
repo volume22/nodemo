@@ -67,7 +67,17 @@ public class CoffeeServiceImpl implements CoffeeService {
 
     @Override
     public List<Coffee> getByCategory(String query) throws Exception {
-        return coffeeRepository.searchByCategory_Name(query);
+        return coffeeRepository.findAllByCategory_NameContaining(query);
+    }
+
+    @Override
+    public List<Coffee> getByNameCoffee(String name) {
+        return coffeeRepository.findAllByNameContainingIgnoreCase(name);
+    }
+
+    @Override
+    public List<Coffee> getByCategoryName(String query) throws Exception {
+        return coffeeRepository.findAllByCategory_NameOrderByNameAsc(query);
     }
 
 }
