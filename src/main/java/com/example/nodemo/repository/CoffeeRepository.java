@@ -13,7 +13,7 @@ public interface CoffeeRepository extends JpaRepository<Coffee,Long> {
 //    @Query(value ="SELECT * FROM coffees WHERE ", nativeQuery = true)
     List<Coffee> findAllByFavorites_FavIsTrue();
     List<Coffee> searchByCategory_Name(String query);
-    List<Coffee> findAllByCategory_NameContaining(String query);
+    List<Coffee> findAllByCategory_NameContainingIgnoreCase(String query);
     List<Coffee> findAllByCategory_NameOrderByNameAsc(String query);
     List<Coffee> findAllByCategoryContaining(String query);
     @Query(value = "SELECT * FROM coffees  WHERE category.name LIKE %:title%",nativeQuery = true)

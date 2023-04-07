@@ -40,11 +40,11 @@ public class CoffeeController {
         return coffeeService.getByLike();
     }
     @GetMapping("/api/coffee-category")
-    public List<Coffee> searchCategory(@RequestBody String query) throws Exception {
-        return coffeeService.getByCategoryName(query);
+    public List<Coffee> searchCategory(@RequestParam(required = false) String query) throws Exception {
+        return coffeeService.getByCategory(query);
     }
     @GetMapping("/api/coffee-name")
-    public List<Coffee> searchName(@RequestBody String name) throws Exception {
+    public List<Coffee> searchName(@RequestParam(required = false) String name) throws Exception {
         return coffeeService.getByNameCoffee(name);
     }
 }
