@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FavoritesServiceImpl implements LikeInterface {
     private final LikeRepository likeRepository;
+
     @Override
     public List<Favorites> getbyAll() throws Exception {
         return likeRepository.findAll();
@@ -28,15 +29,15 @@ public class FavoritesServiceImpl implements LikeInterface {
 
     @Override
     public Long createLike(Boolean fav) {
-       Favorites like = new Favorites();
-       like.setFav(fav);
-       return likeRepository.save(like).getId();
+        Favorites like = new Favorites();
+        like.setFav(fav);
+        return likeRepository.save(like).getId();
     }
 
     @Override
-    public Favorites update(Long id,Boolean fav) throws Exception {
-        Favorites favorites =likeRepository.findById(id).orElseThrow();
-        if (id!=null){
+    public Favorites update(Long id, Boolean fav) throws Exception {
+        Favorites favorites = likeRepository.findById(id).orElseThrow();
+        if (id != null) {
             favorites.setFav(fav);
         }
         return likeRepository.save(favorites);

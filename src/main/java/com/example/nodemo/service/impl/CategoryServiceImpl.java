@@ -28,20 +28,27 @@ public class CategoryServiceImpl implements CategoryService {
         category.setName(name);
         return categoryRepository.save(category).getId();
     }
+
     @Override
-    public Category updateCategory(Long id,String name){
+    public Category updateCategory(Long id, String name) {
         Category category = categoryRepository.findById(id).orElseThrow();
         category.setName(name);
         return categoryRepository.save(category);
     }
+
     @Override
-    public void deleteCategory(Long id){
+    public void deleteCategory(Long id) {
         categoryRepository.deleteById(id);
     }
 
     @Override
     public List<Category> getByNameCategory(String query) {
         return categoryRepository.findAllByNameIgnoreCase(query);
+    }
+
+    @Override
+    public List<Category> getByAll() {
+        return categoryRepository.findAll();
     }
 
 }

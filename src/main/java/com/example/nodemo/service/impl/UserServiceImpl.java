@@ -110,7 +110,7 @@ public class UserServiceImpl implements UserInterface {
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(dto.getUsername());
 
-        if(userDetails != null) {
+        if (userDetails != null) {
             String token = jwtUtils.generateToken(userDetails);
             return token;
         }

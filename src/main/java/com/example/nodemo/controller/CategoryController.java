@@ -8,6 +8,8 @@ import com.example.nodemo.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class CategoryController {
@@ -27,5 +29,9 @@ public class CategoryController {
     @DeleteMapping ("/api/categories/{id}")
     public void deleteCategory( @PathVariable Long id) throws Exception {
         categoryService.deleteCategory(id);
+    }
+    @GetMapping("/api/categories-all")
+    public List<Category> getByAll() throws Exception {
+        return categoryService.getByAll();
     }
 }

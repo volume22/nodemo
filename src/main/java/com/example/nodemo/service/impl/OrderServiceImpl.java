@@ -19,7 +19,7 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
-public  class OrderServiceImpl implements OrderInterface {
+public class OrderServiceImpl implements OrderInterface {
     private final OrderRepository orderRepository;
     private final CoffeeService coffeeService;
 
@@ -28,13 +28,14 @@ public  class OrderServiceImpl implements OrderInterface {
     public Order getById(Long id) throws Exception {
         return orderRepository.findById(id).orElseThrow();
     }
+
     @Override
     public List<Order> getByAll() throws Exception {
         return orderRepository.findAll().stream().toList();
     }
 
     @Override
-    public  Order createOrder(List<Long> ids) throws Exception {
+    public Order createOrder(List<Long> ids) throws Exception {
         Order order = new Order();
         List<Coffee> coffees = new ArrayList<>();
 
@@ -49,6 +50,7 @@ public  class OrderServiceImpl implements OrderInterface {
 
         return orderRepository.save(order);
     }
+
     private int orderSum(List<Coffee> coffees) {
         int sum = 0;
 
@@ -58,8 +60,9 @@ public  class OrderServiceImpl implements OrderInterface {
 
         return sum;
     }
+
     @Override
-    public void deleteOrder(Long id){
+    public void deleteOrder(Long id) {
         orderRepository.deleteById(id);
     }
 }

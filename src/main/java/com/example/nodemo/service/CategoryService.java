@@ -11,4 +11,6 @@ public interface CategoryService {
     Category updateCategory(Long id,String name);
     void deleteCategory(Long id)throws Exception;
     List<Category> getByNameCategory(String query);
+    List<Category> getByAll();
+
 }

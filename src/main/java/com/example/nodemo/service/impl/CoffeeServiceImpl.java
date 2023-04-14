@@ -41,21 +41,31 @@ public class CoffeeServiceImpl implements CoffeeService {
         coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
         return coffeeRepository.save(coffee);
     }
+
     @Override
-    public void deleteCoffee(Long id)throws Exception{
+    public void deleteCoffee(Long id) throws Exception {
         coffeeRepository.deleteById(id);
     }
 
     @Override
-    public Coffee updateCoffee(Long id,CoffeeCreateDto createDto)throws Exception{
-       Coffee coffee=coffeeRepository.findById(id).orElseThrow();
-       if (id!=null){
-        coffee.setName(createDto.getName());
-        coffee.setQuantity(createDto.getQuantity());
-        coffee.setPrice(createDto.getPrice());
-        coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
-        coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
-       }
+    public Coffee updateCoffee(Long id, CoffeeCreateDto createDto) throws Exception {
+        Coffee coffee = coffeeRepository.findById(id).orElseThrow();
+        if (id != null) {
+            coffee.setName(createDto.getName());
+            coffee.setQuantity(createDto.getQuantity());
+            coffee.setPrice(createDto.getPrice());
+            coffee.setCategory(categoryService.getById(createDto.getCategoryId()));
+//            coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
+        }
+        return coffeeRepository.save(coffee);
+    }
+
+    @Override
+    public Coffee updateCoffeeLike(Long id, CoffeeCreateDto createDto) throws Exception {
+        Coffee coffee = coffeeRepository.findById(id).orElseThrow();
+        if (id != null) {
+            coffee.setFavorites(likeInterface.getbyId(createDto.getFavoritesId()));
+        }
         return coffeeRepository.save(coffee);
     }
 
@@ -78,6 +88,11 @@ public class CoffeeServiceImpl implements CoffeeService {
     @Override
     public List<Coffee> getByCategoryName(String query) throws Exception {
         return coffeeRepository.findAllByCategory_NameOrderByNameAsc(query);
+    }
+
+    @Override
+    public List<Coffee> getByAll() {
+        return coffeeRepository.findAll();
     }
 
 }

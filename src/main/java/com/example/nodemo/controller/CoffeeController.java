@@ -22,7 +22,10 @@ public class CoffeeController {
     public List<Coffee> getByIdCoffee(@PathVariable List<Long> id) throws Exception {
         return coffeeService.getByIdCoffee(id);
     }
-
+    @GetMapping("/api/coffee-all")
+    public List<Coffee> getByAll() throws Exception {
+        return coffeeService.getByAll();
+    }
     @PostMapping("/api/coffees")
     public Coffee createCoffee(@RequestBody CoffeeCreateDto createDto) throws Exception {
         return coffeeService.createCoffee(createDto);
@@ -34,6 +37,10 @@ public class CoffeeController {
     @PutMapping("/api/coffee/{id}")
     public Coffee updateCoffee( @PathVariable Long id,@RequestBody CoffeeCreateDto createDto) throws Exception {
         return coffeeService.updateCoffee(id,createDto);
+    }
+    @PutMapping("/api/coffee-like/{id}")
+    public Coffee updateCoffeeLike( @PathVariable Long id,@RequestBody CoffeeCreateDto createDto) throws Exception {
+        return coffeeService.updateCoffeeLike(id,createDto);
     }
     @GetMapping("/api/coffee-like")
     public List<Coffee> isTrue() throws Exception {

@@ -13,10 +13,13 @@ public interface  CoffeeService {
     Coffee createCoffee(CoffeeCreateDto createDto) throws Exception;
     void deleteCoffee(Long id)throws Exception;
     Coffee updateCoffee(Long id,CoffeeCreateDto createDto)throws  Exception;
+    Coffee updateCoffeeLike(Long id,CoffeeCreateDto createDto)throws  Exception;
 
     List<Coffee> getByLike()throws Exception;
 
     List<Coffee> getByCategory(String query)throws Exception;
     List<Coffee> getByNameCoffee(String name);
     List<Coffee> getByCategoryName(String query)throws Exception;
+    List<Coffee> getByAll();
+
 }
